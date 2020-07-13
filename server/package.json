@@ -1,0 +1,29 @@
+{
+  "name": "shortify-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ts-node ./src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.23",
+    "ts-node": "^8.10.2"
+  },
+  "devDependencies": {
+    "@types/config": "0.0.36",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.7",
+    "@types/mongoose": "^5.7.31",
+    "@types/node": "^14.0.22",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.6"
+  }
+}
