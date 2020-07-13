@@ -1,5 +1,6 @@
 import express from 'express';
 import Weburl from '../model/Weburl';
+import uniqueUrl from '../libs/urlGenerator';
 
 const router = express.Router();
 
@@ -15,15 +16,14 @@ router.get('/', async (req, res) => {
 
 
 router.post('/create', async (req, res) => {
-    console.log('**** create', req.body);
     const { inputUrl } = req.body;
     if (inputUrl === '') return res.status(400).json({ error: "Url is missing" });
     try {
-        const url = await Weburl.findOne({ inputUrl });
+        let url = await Weburl.findOne({ inputUrl });
         if (url) return res.json(url);
-        const newUrl = new Weburl({ inputUrl, shortUrl: 'ji4lijif' });
-        await newUrl.save();
-        return res.json(newUrl);
+        url = new Weburl({ inputUrl, shortUrl: uniqueUrl() });
+        await url.save();
+        return res.json(url);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
