@@ -15,12 +15,17 @@ router.get('/', async (req, res) => {
 
 
 router.post('/create', async (req, res) => {
+    console.log('**** create', req.body);
     const { inputUrl } = req.body;
-    if (inputUrl === '') return res.status(400).json({ error: "Url is mandatory" });
+    if (inputUrl === '') return res.status(400).json({ error: "Url is missing" });
     try {
-
+        const url = await Weburl.findOne({ inputUrl });
+        if (url) return res.json(url);
+        const newUrl = new Weburl({ inputUrl, shortUrl: 'ji4lijif' });
+        await newUrl.save();
+        return res.json(newUrl);
     } catch (error) {
-
+        res.status(500).json({ error: error.message });
     }
 })
 
