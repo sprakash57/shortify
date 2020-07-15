@@ -1,0 +1,6 @@
+<main>
+    <input type="search" class="url-input" placeholder="Your url" v-model='newUrl' @keyup.enter="postUrl">
+    <div v-for="url in urls" :key="url.id">
+        <List :url='url'></List>
+    </div>
+</main>

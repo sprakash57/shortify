@@ -1,0 +1,10 @@
+.url-input {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.url-input:focus {
+    outline: none;
+}
