@@ -1,6 +1,9 @@
 <main>
-    <input type="search" class="url-input" placeholder="Your url" v-model='newUrl' @keyup.enter="postUrl">
-    <div v-for="url in urls" :key="url.id">
-        <List :url='url'></List>
-    </div>
+    <input type="search" class="url-input" placeholder="Paste url and hit enter" v-model='newUrl'
+        @keyup.enter="postUrl">
+    <section class="scroll-list">
+        <div v-for="url in urls" :key="url.id">
+            <List :url='url'></List>
+        </div>
+    </section>
 </main>

@@ -10,16 +10,19 @@ export default Vue.extend({
     data() {
         return {
             newUrl: '',
-            urls: [] as any,
-            createdUrl: ''
+            urls: [] as any
         }
     },
     methods: {
         postUrl() {
             axios
                 .post('http://localhost:8081/api/create', { inputUrl: this.newUrl })
-                .then(response => this.urls.unshift(response.data))
+                .then(response => {
+                    if (!response.data.error) this.urls.unshift(response.data);
+                    else console.log(response.data.error);
+                })
                 .catch(error => console.log(error));
+            this.newUrl = '';
         }
     },
     mounted() {

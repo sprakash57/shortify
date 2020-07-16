@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+  <div id="app" class="container">
+    <h1>Shortify</h1>
     <Home />
   </div>
 </template>
@@ -17,19 +17,20 @@ export default {
 </script>
 
 <style>
-* {
-  box-sizing: border-box;
-}
 .container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
+}
+.container > h1 {
+  font-family: cursive;
+  color: tomato;
+  font-style: italic;
+  font-size: 3rem;
+  text-align: center;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

@@ -1,10 +1,17 @@
 .url-input {
     width: 100%;
-    padding: 10px 15px;
-    font-size: 1.6rem;
+    padding: 8px 12px;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
+    border-radius: 1rem;
 }
-
 .url-input:focus {
     outline: none;
+}
+.scroll-list{
+    height: 65vh;
+    overflow: hidden;
+}
+.scroll-list:hover{
+    overflow: auto;
 }
