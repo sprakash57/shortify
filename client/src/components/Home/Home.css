@@ -9,9 +9,16 @@
     outline: none;
 }
 .scroll-list{
-    height: 65vh;
+    height: 70vh;
     overflow: hidden;
 }
 .scroll-list:hover{
     overflow: auto;
+}
+.scroll-list > article {
+    text-align: center;
+    font-weight: 800;
+    opacity: 0.5;
+    font-family: cursive;
+    font-size: 2rem;
 }

@@ -10,7 +10,8 @@ export default Vue.extend({
     data() {
         return {
             newUrl: '',
-            urls: [] as any
+            urls: [] as any,
+            errorMessage: ''
         }
     },
     methods: {
@@ -19,9 +20,9 @@ export default Vue.extend({
                 .post('http://localhost:8081/api/create', { inputUrl: this.newUrl })
                 .then(response => {
                     if (!response.data.error) this.urls.unshift(response.data);
-                    else console.log(response.data.error);
+                    else this.errorMessage = response.data.error;
                 })
-                .catch(error => console.log(error));
+                .catch(error => this.errorMessage = 'You might wanna check your network instead!! 😫');
             this.newUrl = '';
         }
     },
@@ -29,6 +30,6 @@ export default Vue.extend({
         axios
             .get('http://localhost:8081/api')
             .then(response => this.urls = response.data)
-            .catch(error => console.log(error.message));
+            .catch(error => this.errorMessage = 'hmm... It seems network is broken or server is down 😴');
     }
 })

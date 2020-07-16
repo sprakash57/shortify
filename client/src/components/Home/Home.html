@@ -2,7 +2,14 @@
     <input type="search" class="url-input" placeholder="Paste url and hit enter" v-model='newUrl'
         @keyup.enter="postUrl">
     <section class="scroll-list">
-        <div v-for="url in urls" :key="url.id">
+        <article v-if="errorMessage">
+            <p>{{errorMessage}}</p>
+        </article>
+        <article v-else-if="urls.length === 0">
+            <p>Looks Empty Here!!</p>
+            <p>Start creating shorties</p>
+        </article>
+        <div v-for="url in urls" :key="url.id" v-else>
             <List :url='url'></List>
         </div>
     </section>

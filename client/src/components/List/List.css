@@ -13,6 +13,7 @@
 }
 .card-header > small:nth-child(1) {
     margin-bottom: 10px;
+    user-select: all;
 }
 .card-url {
     padding: 0px 15px 5px 15px;
@@ -20,4 +21,5 @@
 .card-url > h2 {
     user-select: all;
     margin: 5px 0 5px 0;
+    cursor: pointer;
 }
