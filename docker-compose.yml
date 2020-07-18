@@ -1,0 +1,20 @@
+version: '3'
+services:
+    api:
+        container_name: shortify-server
+        restart: always
+        build: ./server
+        ports: 
+            - '8081:8081'
+        links:
+            - 'db'
+    client:
+        container_name: shortify-client
+        build: ./client
+        ports: 
+            - '8080:8080'
+    db:
+        container_name: shortify-db
+        image: mongo
+        ports: 
+            - '27017:27017'
