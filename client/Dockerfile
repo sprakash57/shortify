@@ -1,12 +1,14 @@
 FROM node:12.18.2
 
-WORKDIR /usr/app/client
+RUN mkdir -p /usr/app
+WORKDIR /usr/app
 
 COPY package*.json ./
-RUN npm install
 RUN npm install -g @vue/cli
+RUN npm install
 
-COPY . .
+COPY . ./
+RUN ls
 
 EXPOSE 8080
 

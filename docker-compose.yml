@@ -1,20 +1,23 @@
 version: '3.7'
 services:
     api:
-        container_name: shortify-server
-        restart: always
+        container_name: api
         build: ./server
         ports: 
             - '8081:8081'
-        links:
+        depends_on:
             - db
+        environment:
+            - URL=db:27017
     db:
-        container_name: shortify-db
+        container_name: db
         image: mongo
         ports: 
             - '27017:27017'
     client:
-        container_name: shortify-client
+        container_name: client
         build: ./client
         ports: 
             - '8080:8080'
+        environment: 
+            - API_URL=http://api:8081/

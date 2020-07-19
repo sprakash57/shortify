@@ -17,7 +17,7 @@ export default Vue.extend({
     methods: {
         postUrl() {
             axios
-                .post('http://localhost:8081/api/create', { inputUrl: this.newUrl })
+                .post(`${process.env.API_URL || 'http://localhost:8081'}/api/create`, { inputUrl: this.newUrl })
                 .then(response => {
                     if (!response.data.error) this.urls.unshift(response.data);
                     else this.errorMessage = response.data.error;
@@ -28,7 +28,7 @@ export default Vue.extend({
     },
     mounted() {
         axios
-            .get('http://localhost:8081/api')
+            .get(`${process.env.API_URL || 'http://localhost:8081'}/api`)
             .then(response => this.urls = response.data)
             .catch(error => this.errorMessage = 'hmm... It seems network is broken or server is down 😴');
     }
