@@ -1,5 +1,14 @@
 version: '3.7'
 services:
+    client:
+        container_name: client
+        build: ./client
+        ports: 
+            - '8080:8080'
+        links: 
+            - api
+        networks: 
+            - shortifybridge
     api:
         container_name: api
         build: ./server
@@ -9,15 +18,16 @@ services:
             - db
         environment:
             - URL=db:27017
+        networks: 
+            - shortifybridge
     db:
         container_name: db
         image: mongo
-        ports: 
+        ports:
             - '27017:27017'
-    client:
-        container_name: client
-        build: ./client
-        ports: 
-            - '8080:8080'
-        environment: 
-            - API_URL=http://api:8081/
+        networks: 
+            - shortifybridge
+
+networks: 
+    shortifybridge:
+        driver: bridge

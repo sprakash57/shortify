@@ -4,6 +4,9 @@ import mongoose from 'mongoose';
 import router from './routes/weburl';
 
 const app = express();
+app.use(cors());
+app.use(express.json());
+
 const port = 8081;
 const DB_URL = process.env.URL || 'localhost:27017'
 
@@ -18,9 +21,6 @@ db.on('error', console.error.bind(console, `DB connection error: ${DB_URL}`));
 db.once('open', () => {
     console.log('MongoDB connected!!!')
 })
-
-app.use(cors());
-app.use(express.json());
 
 // Routes
 app.use('/api', router);
