@@ -2,7 +2,7 @@
   Shortify
 </h1>
 
-> A Simple url shortener App and services. It will convert your boring long url into nice and simple 8 character *shorties* (That is what i call short urls 😁). Not to mention they are unique for every new url. It also keeps the history of your recent conversions. One click to copy and off you go.
+> A Simple url shortener App and services built upon **MEVN/VENoM** stack. It will convert your boring long url into nice and simple 8 character *shorties* (That is what i call short urls 😁). Not to mention they are unique for every new url. It also keeps the history of your recent conversions. One click to copy and off you go.
 
 ## 🚀 Quick start
 
