@@ -15,10 +15,10 @@
 .scroll-list:hover{
     overflow: auto;
 }
-.scroll-list > article {
+.alert{
     text-align: center;
     font-weight: 800;
     opacity: 0.5;
     font-family: cursive;
-    font-size: 2rem;
+    font-size: 1.6rem;
 }

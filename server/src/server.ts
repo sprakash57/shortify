@@ -18,13 +18,11 @@ mongoose.connect(`mongodb://${DB_URL}/shortify`, {
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, `DB connection error: ${DB_URL}`));
-db.once('open', () => {
-    console.log('MongoDB connected!!!')
-})
+db.once('open', () => console.log('Connected to Database'));
 
 // Routes
 app.use('/api', router);
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+app.listen(port, () => console.log(`Server is running on port ${port}...`));
 
 export default app;

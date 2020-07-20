@@ -1,16 +1,19 @@
 <main>
     <input type="search" class="url-input" placeholder="Paste url and hit enter" v-model='newUrl'
         @keyup.enter="postUrl">
-    <section class="scroll-list">
-        <article v-if="errorMessage">
-            <p>{{errorMessage}}</p>
+    <section>
+        <article v-if="errorMessage" class="alert">
+            <p>⚡ {{errorMessage}}</p>
         </article>
-        <article v-else-if="urls.length === 0">
-            <p>Looks Empty Here!!</p>
+        <article v-else-if="urls.length === 0" class="alert">
+            <p>ℹ Looks Empty Here!!</p>
             <p>Start creating shorties</p>
         </article>
-        <div v-for="url in urls" :key="url.id" v-else>
-            <List :url='url'></List>
-        </div>
+        <article v-else class="scroll-list">
+            <p v-if="warningMessage" class="alert">⚠ {{warningMessage}}</p>
+            <div v-for="url in urls" :key="url.id">
+                <List :url='url'></List>
+            </div>
+        </article>
     </section>
 </main>
