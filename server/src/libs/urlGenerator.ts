@@ -24,7 +24,7 @@ const uniqueUrl = (): string => {
             }
         });
     }
-    return `https://pbid.io/${code}`;
+    return `https://sup.dev/${code}`;
 }
 
 export default uniqueUrl;
