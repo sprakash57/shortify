@@ -14,12 +14,19 @@
 Go to the root directory and follow below steps -
 
 For Client - 
-$ `cd client`
-$ `npm run serve`
+
+```
+$ cd client
+$ npm run serve
+```
 
 For Server - 
-$ `cd server`
-$ `npm run dev`
+
+```
+$ cd server
+$ npm run dev
+```
+
 
 ### API Services
 
