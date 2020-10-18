@@ -20,11 +20,11 @@ export default Vue.extend({
     watch: {
         mode: function(val) {
             const body = document.getElementsByTagName('body')[0]
-            const card = document.getElementsByClassName('card')
-            const urlInput = document.getElementsByClassName('url-input')[0]
+            const card = Array.from(document.getElementsByClassName('card') as HTMLCollectionOf<HTMLElement>)
+            const urlInput = Array.from(document.getElementsByClassName('url-input') as HTMLCollectionOf<HTMLElement>)[0]
             if(val==='dark') {
                 body.style.backgroundColor = 'black'
-                card.forEach(item => {
+                card.forEach((item:any) => {
                     item.style.backgroundColor = 'mediumslateblue'
                 })
                 urlInput.style.backgroundColor = 'mediumslateblue'
