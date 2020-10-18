@@ -13,10 +13,37 @@ export default Vue.extend({
             newUrl: '',
             urls: [] as any[],
             errorMessage: '',
-            warningMessage: ''
+            warningMessage: '',
+            mode: 'light'
+        }
+    },
+    watch: {
+        mode: function(val) {
+            const body = document.getElementsByTagName('body')[0]
+            const card = document.getElementsByClassName('card')
+            const urlInput = document.getElementsByClassName('url-input')[0]
+            if(val==='dark') {
+                body.style.backgroundColor = 'black'
+                card.forEach(item => {
+                    item.style.backgroundColor = 'mediumslateblue'
+                })
+                urlInput.style.backgroundColor = 'mediumslateblue'
+                urlInput.style.color = 'white'
+            } else {
+                body.style.backgroundColor = 'white'
+                card.forEach(item => {
+                    item.style.backgroundColor = 'tomato'
+                })
+                urlInput.style.backgroundColor = 'white'
+                urlInput.style.color = 'black'
+            }
         }
     },
     methods: {
+        setMode() {
+            const setter = (this.mode==='dark') ? 'light' : 'dark'
+            this.mode = setter
+        },
         postUrl() {
             this.warningMessage = this.checkForWarnings();
             console.log(this.warningMessage);
@@ -42,5 +69,6 @@ export default Vue.extend({
             .get(API_URL)
             .then(response => this.urls = response.data)
             .catch(error => this.errorMessage = 'hmm... It seems network is broken or server is down 😴');
+        this.mode = localStorage.getItem('mode') || 'light'
     }
 })
