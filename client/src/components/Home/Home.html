@@ -1,6 +1,7 @@
 <main>
     <input type="search" class="url-input" placeholder="Paste url and hit enter" v-model='newUrl'
         @keyup.enter="postUrl">
+    <button class="btn" @click="setMode()">{{mode==='dark' ? "🌙" : "🌞"}}</button>
     <section>
         <article v-if="errorMessage" class="alert">
             <p>⚡ {{errorMessage}}</p>

@@ -12,6 +12,10 @@ export default {
   name: "App",
   components: {
     Home
+  },
+  created: function() {
+    const mode = localStorage.getItem("mode")
+    mode ? localStorage.setItem("mode", mode) : localStorage.setItem("mode", "light")
   }
 };
 </script>
@@ -19,7 +23,7 @@ export default {
 <style>
 .container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0px auto;
 }
 .container > h1 {
   font-family: cursive;

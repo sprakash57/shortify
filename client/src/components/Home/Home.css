@@ -22,3 +22,13 @@
     font-family: cursive;
     font-size: 1.6rem;
 }
+.btn {
+    border: 0px;
+    outline: 0px;
+    padding: 5px;
+    font-size: 1.6rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 50px;
+    right: 80px;
+}
