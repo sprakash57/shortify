@@ -29,4 +29,28 @@ router.post('/create', async (req, res) => {
     }
 })
 
+router.post('/delete', async (req, res) => {
+    const { inputUrl } = req.body;
+    if (inputUrl === '') return res.status(400).json({ error: "Url is missing" });
+    try {
+        let url = await Weburl.deleteOne({ inputUrl });
+        return res.status(200).json({
+            //message can be send here
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
+
+router.post('/deleteAll', async (req, res) => {
+    try {
+        let url = await Weburl.remove({});
+        return res.status(200).json({
+            //message can be send here
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
+
 export default router;
