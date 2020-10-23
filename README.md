@@ -28,8 +28,9 @@ $ npm run dev
 
 ### API Services
 
-| GET  | /api        | Retrieve all shorties |
+|      | Endpoint    | Service               |
 |------|-------------|-----------------------|
+| GET  | /api        | Retrieve all shorties |
 | POST | /api/create | Create a shorty       |
 
 ### User curl
@@ -58,6 +59,8 @@ $ npm run dev
 4. Test your changes thorughly. Put proper and meaningfull commit messages. Inline comments for complex logic, JSDoc and explanation for any external library is highly appreciated.
 
 5. Create a Pull Request. Follow this guide https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github to know more.
+
+6. Star ⭐ to the repo would be much appreciated.
 
 ## Note: If you need detailed info on Pull request
 https://www.atlassian.com/git/tutorials/making-a-pull-request.
