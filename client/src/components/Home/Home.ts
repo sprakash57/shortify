@@ -18,13 +18,13 @@ export default Vue.extend({
         }
     },
     watch: {
-        mode: function(val) {
+        mode: function (val) {
             const body = document.getElementsByTagName('body')[0]
             const card = Array.from(document.getElementsByClassName('card') as HTMLCollectionOf<HTMLElement>)
             const urlInput = Array.from(document.getElementsByClassName('url-input') as HTMLCollectionOf<HTMLElement>)[0]
-            if(val==='dark') {
+            if (val === 'dark') {
                 body.style.backgroundColor = 'black'
-                card.forEach((item:any) => {
+                card.forEach(item => {
                     item.style.backgroundColor = 'mediumslateblue'
                 })
                 urlInput.style.backgroundColor = 'mediumslateblue'
@@ -41,7 +41,7 @@ export default Vue.extend({
     },
     methods: {
         setMode() {
-            const setter = (this.mode==='dark') ? 'light' : 'dark'
+            const setter = (this.mode === 'dark') ? 'light' : 'dark'
             this.mode = setter
         },
         postUrl() {
