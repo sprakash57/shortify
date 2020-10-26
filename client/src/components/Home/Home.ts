@@ -11,7 +11,7 @@ export default Vue.extend({
     data() {
         return {
             newUrl: '',
-            urls: [] as any[],
+            urls: [] as any,
             errorMessage: '',
             warningMessage: '',
             mode: 'light'
@@ -65,10 +65,10 @@ export default Vue.extend({
         }
     },
     mounted() {
-        axios
-            .get(API_URL)
-            .then(response => this.urls = response.data)
-            .catch(error => this.errorMessage = 'hmm... It seems network is broken or server is down 😴');
+        // axios
+        //     .get(API_URL)
+        //     .then(response => this.urls = response.data)
+        //     .catch(error => this.errorMessage = 'hmm... It seems network is broken or server is down 😴');
         this.mode = localStorage.getItem('mode') || 'light'
     }
 })
