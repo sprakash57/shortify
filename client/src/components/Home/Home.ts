@@ -11,7 +11,7 @@ export default Vue.extend({
     data() {
         return {
             newUrl: '',
-            urls: [] as any,
+            urls: [] as any[],
             errorMessage: '',
             warningMessage: '',
             mode: 'light'
