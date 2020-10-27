@@ -12,7 +12,17 @@ describe('Get endpoint', () => {
     })
 })
 
-describe('delete endpoint', () => {
+describe('Delete endpoint', () => {
+    beforeAll(async () => {
+        await request(server).post('/api/create').send({ inputUrl: 'some url' });
+    });
+    it('should delete a post input url', async () => {
+        const res = await request(server).delete('/api/delete').send({ inputUrl: 'some url' });
+        expect(res.body.message).toEqual('Url deleted');
+    })
+})
+
+describe('DeleteAll endpoint', () => {
   beforeAll(async () => {
       await request(server).delete('/api/deleteAll').send();
       await request(server).post('/api/create').send({ inputUrl: 'first.url' });
