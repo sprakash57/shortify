@@ -7,11 +7,15 @@ describe('Implement test suite for List component', () => {
             propsData: {
                 url: {
                     inputUrl: 'some url',
-                    shotUrl: 'short',
-                    createdAt: '2020-07-15T18:52:45.195Z'
+                    shortUrl: 'short',
+                    createdAt: '2010-07-15T18:52:45.195Z'
                 }
             }
         });
         expect(wrapper.text()).toContain('some url');
+        expect(wrapper.text()).toContain('short');
+        expect(wrapper.text()).toContain('10 years ago');
     })
 })
+
+
