@@ -19,24 +19,9 @@ export default Vue.extend({
     },
     watch: {
         mode: function (val) {
-            const body = document.getElementsByTagName('body')[0]
-            const card = Array.from(document.getElementsByClassName('card') as HTMLCollectionOf<HTMLElement>)
-            const urlInput = Array.from(document.getElementsByClassName('url-input') as HTMLCollectionOf<HTMLElement>)[0]
-            if (val === 'dark') {
-                body.style.backgroundColor = 'black'
-                card.forEach(item => {
-                    item.style.backgroundColor = 'mediumslateblue'
-                })
-                urlInput.style.backgroundColor = 'mediumslateblue'
-                urlInput.style.color = 'white'
-            } else {
-                body.style.backgroundColor = 'white'
-                card.forEach(item => {
-                    item.style.backgroundColor = 'tomato'
-                })
-                urlInput.style.backgroundColor = 'white'
-                urlInput.style.color = 'black'
-            }
+          this.$emit('changeMode',val)
+          const body = document.getElementsByTagName('body')[0]
+          val === 'dark' ? body.style.backgroundColor = 'black' : body.style.backgroundColor = 'white'
         }
     },
     methods: {
