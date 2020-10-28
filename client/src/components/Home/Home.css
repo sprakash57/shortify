@@ -52,3 +52,7 @@
 #app.dark .card {
   background-color: mediumslateblue;
 }
+
+#app.dark .alert {
+  color: white;
+}
