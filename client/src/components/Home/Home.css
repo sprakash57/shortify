@@ -44,6 +44,11 @@
   background-color: mediumslateblue;
   color: white;
 }
+
+#app.dark .url-input::placeholder {
+  color: #D6D6D6;
+}
+
 #app.dark .card {
   background-color: mediumslateblue;
 }
