@@ -28,10 +28,12 @@ $ npm run dev
 
 ### API Services
 
-|      | Endpoint    | Service               |
-|------|-------------|-----------------------|
-| GET  | /api        | Retrieve all shorties |
-| POST | /api/create | Create a shorty       |
+|        | Endpoint       | Service               |
+|--------|----------------|-----------------------|
+| GET    | /api           | Retrieve all shorties |
+| POST   | /api/create    | Create a shorty       |
+| DELETE | /api/delete/id | Delete a shorty       |
+| DELETE | /api/deleteAll | Delete all shorties   |
 
 ### User curl
 
