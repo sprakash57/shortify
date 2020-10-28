@@ -4,6 +4,10 @@
         <small>{{calculateTime()}}</small>
     </article>
     <article class="card-url">
-        <h2>{{url.shortUrl}}</h2>
+        <h2>{{url.shortUrl.split("//").slice(-1)[0]}}</h2>
+        <button class="copy-button" @click="copyUrlToClipboard()">Copy</button>
     </article>
+    <div class="copy-notification" id="copyNotificationId">
+        Copied: {{ url.shortUrl }}
+    </div>
 </section>

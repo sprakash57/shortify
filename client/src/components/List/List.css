@@ -1,25 +1,63 @@
 .card {
-    background: tomato;
-    color: white;
-    border-radius: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    margin-bottom: 10px;
+  background: tomato;
+  color: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px;
 }
 .card-header {
-    padding: 10px 15px 0 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  padding: 10px 15px 0 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .card-header > small:nth-child(1) {
-    margin-bottom: 10px;
-    user-select: all;
+  margin-bottom: 10px;
+  user-select: all;
 }
 .card-url {
-    padding: 0px 15px 5px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px 5px 15px;
 }
 .card-url > h2 {
-    user-select: all;
-    margin: 5px 0 5px 0;
-    cursor: pointer;
+  user-select: all;
+  margin: 5px 0 5px 0;
+  cursor: pointer;
+}
+
+.copy-button {
+  padding: 5px 15px;
+  background-color: transparent;
+  transition-duration: 0.4s;
+  border: 2px solid white;
+  color: white;
+  border-radius: 4px;
+}
+
+.copy-button:hover {
+  background-color: white;
+  color: tomato;
+}
+
+.copy-notification {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 300px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 20px;
+  padding: 10px 15px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.copy-notification-visible {
+  opacity: 1;
 }
