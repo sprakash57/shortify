@@ -1,23 +1,35 @@
 <template>
-  <div id="app" class="container">
+  <div id="app" class="container" :class="mode">
     <h1>Shortify</h1>
-    <Home />
+    <Home @changeMode='changeMode'/>
   </div>
 </template>
 
 <script lang="ts">
+import Vue from 'vue';
 import Home from "@/components/Home/Home.vue";
 
-export default {
+export default Vue.extend({
   name: "App",
   components: {
     Home
   },
+  data() {
+    return {
+      mode: 'light' 
+    }
+  },
+  methods: {
+    changeMode(val: string) {
+      this.mode = val
+    }
+  },
   created: function() {
-    const mode = localStorage.getItem("mode")
-    mode ? localStorage.setItem("mode", mode) : localStorage.setItem("mode", "light")
+      this.mode = localStorage.getItem("mode") || 'light'
+      this.mode ? localStorage.setItem("mode", this.mode) : localStorage.setItem("mode", "light")
+
   }
-};
+});
 </script>
 
 <style>

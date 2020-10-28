@@ -8,6 +8,9 @@
 .url-input:focus {
     outline: none;
 }
+.card {
+  background-color: tomato;
+}
 .scroll-list{
     height: 70vh;
     overflow: hidden;
@@ -31,4 +34,26 @@
     position: absolute;
     top: 50px;
     right: 80px;
+    line-height: 1;
+}
+
+/********************/
+/**** DARK MODE ****/
+/******************/
+
+#app.dark .url-input {
+  background-color: mediumslateblue;
+  color: white;
+}
+
+#app.dark .url-input::placeholder {
+  color: #D6D6D6;
+}
+
+#app.dark .card {
+  background-color: mediumslateblue;
+}
+
+#app.dark .alert {
+  color: white;
 }
