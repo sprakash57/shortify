@@ -29,13 +29,24 @@ router.post('/create', async (req, res) => {
     }
 })
 
+router.delete('/delete/:id', async (req, res) => {
+    const { id } = req.params;
+    if (id === '') return res.status(400).json({ error: "Id is missing" });
+    try {
+        let response = await Weburl.findByIdAndDelete(id);
+        return res.json({ message: "Url deleted" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
+
 router.delete('/deleteAll', async (req, res) => {
-  try {
-      let response = await Weburl.deleteMany({});
-      return res.json(response);
-  } catch (error) {
-      res.status(500).json({ error: error.message });
-  }
+    try {
+        let response = await Weburl.deleteMany({});
+        return res.json(response);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 })
 
 export default router;

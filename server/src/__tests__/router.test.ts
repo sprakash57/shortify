@@ -1,5 +1,7 @@
 import server from '../server';
 import request from 'supertest';
+import Weburl from '../model/Weburl';
+import uniqueUrl from '../libs/urlGenerator';
 
 describe('Get endpoint', () => {
     it('should fetch all the urls', async () => {
@@ -12,7 +14,15 @@ describe('Get endpoint', () => {
     })
 })
 
-describe('delete endpoint', () => {
+describe('Delete endpoint', () => {
+    it('should delete a post input url', async () => {
+        const url = new Weburl({ inputUrl: 'some url', shortUrl: uniqueUrl() });
+        const response = await request(server).delete('/api/delete/' + url.id);
+        expect(response.body.message).toEqual('Url deleted');
+    })
+})
+
+describe('DeleteAll endpoint', () => {
   beforeAll(async () => {
       await request(server).delete('/api/deleteAll').send();
       await request(server).post('/api/create').send({ inputUrl: 'first.url' });
