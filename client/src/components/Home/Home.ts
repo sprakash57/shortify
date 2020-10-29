@@ -24,6 +24,14 @@ export default Vue.extend({
           val === 'dark' ? body.style.backgroundColor = 'black' : body.style.backgroundColor = 'white'
         }
     },
+    computed: {
+        iconType(): string {
+            return (this.mode === 'dark') ? 'sun' : 'moon';
+        },
+        iconClass(): string {
+            return (this.mode === 'dark') ? 'icon--yellow' : 'icon--grey';
+        },
+    },
     methods: {
         setMode() {
             const setter = (this.mode === 'dark') ? 'light' : 'dark'

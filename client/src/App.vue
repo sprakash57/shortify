@@ -16,7 +16,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      mode: 'light' 
+      mode: 'light'
     }
   },
   methods: {
@@ -48,5 +48,13 @@ export default Vue.extend({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon--yellow {
+    color: #f2760f;
+}
+
+.icon--grey {
+    color: #66757f;
 }
 </style>
