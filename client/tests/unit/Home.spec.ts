@@ -2,10 +2,13 @@ import { mount } from '@vue/test-utils'
 import Home from '@/components/Home/Home.vue';
 import axios from 'axios';
 import { API_URL } from '@/constants';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { registerFaIcons } from '../../src/icons'
 
 describe('Implement test suite for Home component', () => {
 
     beforeEach(() => {
+        registerFaIcons()
         jest.spyOn(axios, "get").mockResolvedValueOnce({
             data: []
         })
@@ -13,23 +16,38 @@ describe('Implement test suite for Home component', () => {
 
     afterEach(jest.restoreAllMocks)
     it('Component should have one input field', () => {
-        const wrapper = mount(Home);
+        const wrapper = mount(Home, {
+            components: {
+                'Icon': FontAwesomeIcon
+            }
+        });
         expect(wrapper.findAll('input')).toHaveLength(1);
     })
 
     it("should call backend when rendered", () => {
-        mount(Home)
+        mount(Home, {
+            components: {
+                'Icon': FontAwesomeIcon
+            }
+        })
         expect(axios.get).toHaveBeenCalledWith(API_URL)
     })
 
     it("should fetch localStorage for mode", () => {
         const mockLocalStorage = jest.spyOn(window.localStorage.__proto__, 'getItem')
-        mount(Home)
+        mount(Home, {
+            components: {
+                'Icon': FontAwesomeIcon
+            }
+        })
         expect(mockLocalStorage).toHaveBeenCalledWith("mode")
     })
 
     it("should call set mode when mode button get clicked", () => {
         const wrapper = mount(Home, {
+            components: {
+                'Icon': FontAwesomeIcon
+            },
             watch: {
                 mode: jest.fn()
             }
@@ -42,7 +60,11 @@ describe('Implement test suite for Home component', () => {
     })
 
     it("should show error message if newUrl is not a valid url", async () => {
-        const wrapper = mount(Home)
+        const wrapper = mount(Home, {
+            components: {
+                'Icon': FontAwesomeIcon
+            },
+        })
         wrapper.setData({
             newUrl: "invalid url"
         })
@@ -60,7 +82,11 @@ describe('Implement test suite for Home component', () => {
         })
         const testNewUrl = "test.com"
 
-        const wrapper = mount(Home)
+        const wrapper = mount(Home, {
+            components: {
+                'Icon': FontAwesomeIcon
+            }
+        })
         wrapper.setData({
             newUrl: testNewUrl
         })
@@ -79,7 +105,11 @@ describe('Implement test suite for Home component', () => {
             error: {}
         })
         const testNewUrl = "test.com"
-        const wrapper = mount(Home)
+        const wrapper = mount(Home, {
+            components: {
+                'Icon': FontAwesomeIcon
+            }
+        })
         wrapper.setData({
             newUrl: testNewUrl
         })
