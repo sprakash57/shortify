@@ -9,7 +9,9 @@ const icons = [
     require('@fortawesome/free-solid-svg-icons/faExclamationTriangle').definition,
     require('@fortawesome/free-solid-svg-icons/faMoon').definition,
     require('@fortawesome/free-solid-svg-icons/faSun').definition,
-    require('@fortawesome/free-solid-svg-icons/faCopy').definition
+    require('@fortawesome/free-solid-svg-icons/faCopy').definition,
+    require('@fortawesome/free-solid-svg-icons/faCopy').definition,
+    require('@fortawesome/free-solid-svg-icons/faTrash').definition
 ];
 
 // Globally register the font awesome component

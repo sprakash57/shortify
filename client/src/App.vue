@@ -28,7 +28,6 @@ export default Vue.extend({
   created: function() {
       this.mode = localStorage.getItem("mode") as Mode || Mode.LIGHT
       this.mode ? localStorage.setItem("mode", this.mode) : localStorage.setItem("mode", Mode.LIGHT)
-
   }
 });
 </script>
