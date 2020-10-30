@@ -1,4 +1,4 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import List from '@/components/List/List.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import axios from 'axios';
@@ -14,8 +14,7 @@ describe('Implement test suite for List component', () => {
                 url: {
                     inputUrl: 'some url',
                     shortUrl: 'short',
-                    createdAt: '2010-07-15T18:52:45.195Z',
-                    _id: "test-id"
+                    createdAt: '2010-07-15T18:52:45.195Z'
                 }
             }
         });
@@ -33,8 +32,7 @@ describe('Implement test suite for List component', () => {
                 url: {
                     inputUrl: 'some url',
                     shortUrl: 'short',
-                    createdAt: '2010-07-15T18:52:45.195Z',
-                    _id: "test-id"
+                    createdAt: '2010-07-15T18:52:45.195Z'
                 }
             }
         });
