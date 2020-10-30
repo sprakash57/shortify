@@ -5,7 +5,7 @@ import { API_URL } from '@/constants';
 import { DeleteUrlResponse } from '@/types/api';
 
 type Data = {
-    shouldHideCard: boolean;
+    shouldShowCard: boolean;
 }
 
 export default Vue.extend({
@@ -15,7 +15,7 @@ export default Vue.extend({
     },
     data(): Data {
         return {
-            shouldHideCard: false
+            shouldShowCard: true
         }
     },
     methods: {
@@ -35,7 +35,7 @@ export default Vue.extend({
         deleteUrl() {
             axios
                 .delete<DeleteUrlResponse>(`${API_URL}/delete/${this.url._id}`)
-                .then(() => this.shouldHideCard = true)
+                .then(() => this.shouldShowCard = false)
                 .catch(() => alert(`Internal Server Error`));
         }
     }
