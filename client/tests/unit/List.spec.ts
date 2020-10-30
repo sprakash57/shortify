@@ -55,7 +55,7 @@ describe('Implement test suite for List component', () => {
             createdAt: '2010-07-15T18:52:45.195Z',
             _id: "test-id"
         }
-        const wrapper = mount(List, {
+        const wrapper = shallowMount(List, {
             components: {
                 'Icon': FontAwesomeIcon
             },
@@ -63,10 +63,8 @@ describe('Implement test suite for List component', () => {
                 url: mockUrlData
             }
         });
-
-        console.log(wrapper.find("button"))
-
-        wrapper.find("button").trigger("click")
+        const deleteButton = wrapper.find("#delete-button")
+        deleteButton.trigger("click")
         expect(axios.delete).toHaveBeenCalledWith(`${API_URL}/delete/${mockUrlData._id}`)
     })
 })
