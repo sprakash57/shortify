@@ -8,6 +8,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Home from "@/components/Home/Home.vue";
+import { Mode } from '@/types/theme';
 
 export default Vue.extend({
   name: "App",
@@ -16,17 +17,17 @@ export default Vue.extend({
   },
   data() {
     return {
-      mode: 'light'
+      mode: Mode.LIGHT
     }
   },
   methods: {
-    changeMode(val: string) {
+    changeMode(val: Mode) {
       this.mode = val
     }
   },
   created: function() {
-      this.mode = localStorage.getItem("mode") || 'light'
-      this.mode ? localStorage.setItem("mode", this.mode) : localStorage.setItem("mode", "light")
+      this.mode = localStorage.getItem("mode") as Mode || Mode.LIGHT
+      this.mode ? localStorage.setItem("mode", this.mode) : localStorage.setItem("mode", Mode.LIGHT)
 
   }
 });
