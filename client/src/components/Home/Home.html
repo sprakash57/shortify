@@ -1,15 +1,17 @@
 <main>
     <input type="search" class="url-input" placeholder="Paste url and hit enter" v-model='newUrl'
         @keyup.enter="postUrl">
-    <button class="btn" @click="setMode()">
-        <Icon :class="iconClass" :icon="iconType" />
-    </button>
+
     <section>
         <article v-if="errorMessage" class="alert">
-            <p><Icon class="icon--yellow" icon="bolt" /> {{errorMessage}}</p>
+            <p>
+                <Icon class="icon--yellow" icon="bolt" /> {{errorMessage}}
+            </p>
         </article>
         <article v-else-if="urls.length === 0" class="alert">
-            <p><Icon icon="info" /> Looks Empty Here!!</p>
+            <p>
+                <Icon icon="info" /> Looks Empty Here!!
+            </p>
             <p>Start creating shorties</p>
         </article>
         <article v-else class="scroll-list">

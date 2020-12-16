@@ -1,35 +1,39 @@
 <template>
   <div id="app" class="container" :class="mode">
+    <Navbar @changeMode="changeMode" />
     <h1>Shortify</h1>
-    <Home @changeMode='changeMode'/>
+    <Home />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from "vue";
+import Navbar from "./components/Navbar/index.vue";
 import Home from "@/components/Home/Home.vue";
-import { Mode } from '@/types/theme';
+import { Mode } from "@/types/theme";
 
 export default Vue.extend({
   name: "App",
   components: {
-    Home
+    Navbar,
+    Home,
   },
   data() {
     return {
-      mode: Mode.LIGHT
-    }
+      mode: Mode.LIGHT,
+    };
   },
   methods: {
     changeMode(val: Mode) {
-      this.mode = val
-    }
+      this.mode = val;
+    },
   },
-  created: function() {
-      this.mode = localStorage.getItem("mode") as Mode || Mode.LIGHT
-      this.mode ? localStorage.setItem("mode", this.mode) : localStorage.setItem("mode", Mode.LIGHT)
-
-  }
+  created: function () {
+    this.mode = (localStorage.getItem("mode") as Mode) || Mode.LIGHT;
+    this.mode
+      ? localStorage.setItem("mode", this.mode)
+      : localStorage.setItem("mode", Mode.LIGHT);
+  },
 });
 </script>
 
@@ -49,13 +53,5 @@ export default Vue.extend({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.icon--yellow {
-    color: #f2760f;
-}
-
-.icon--grey {
-    color: #66757f;
 }
 </style>
