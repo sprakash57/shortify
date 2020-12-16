@@ -27,18 +27,37 @@
   cursor: pointer;
 }
 
-.copy-button {
+.base-button {
   padding: 5px 15px;
-  background-color: transparent;
-  transition-duration: 0.4s;
-  border: 2px solid white;
-  color: white;
   border-radius: 4px;
+  cursor: pointer;
+}
+
+.copy-button {
+  background-color: transparent;
+  border: 2px solid white;
+  transition-duration: 0.4s;
+  color: white;
+  margin-right: auto;
+  margin-left: 20px;
 }
 
 .copy-button:hover {
   background-color: white;
   color: tomato;
+}
+
+.delete-button {
+  background-color: transparent;
+  border: 2px solid white;
+  transition-duration: 0.4s;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: black;
+  color: white;
+  border-color: black;
 }
 
 .copy-notification {
