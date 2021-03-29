@@ -1,0 +1,287 @@
+openapi: 3.0.3
+info:
+  title: Shortify REST API
+  description: |-
+    **Shortify** converts your long URL into an eight-character short URL (a *'shorty'*).
+
+    ## Install Shortify (with Docker)
+
+    1. [Clone](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) the Shortify repository (https://github.com/sprakash57/shortify) to your local machine
+    2. Ensure [Docker](https://www.docker.com/products/docker-desktop) is installed and running on your system
+    3. In your terminal app, visit the folder you cloned Shortify into and type `docker-compose up`
+    4. Once the Docker container (server, client and database) is running, visit [http://localhost:8080/](http://localhost:8080/)
+
+  version: '1.0'
+  x-logo:
+    url: 'shortify-logo.png'
+    backgroundColor: '#FFFFFF'
+    altText: 'Shortify logo'
+  contact:
+    url: 'https://suprdev.netlify.app/contact'
+    name: Supr Dev
+  license:
+    name: GNU General Public License version 3.0
+    url: 'https://opensource.org/licenses/GPL-3.0'
+externalDocs:
+  description: The Shortify repository
+  url: 'https://github.com/sprakash57/shortify'
+servers:
+  - url: 'http://localhost:8081/api'
+    description: Localhost
+tags:
+  - name: Endpoints
+    description: All the Shortify REST API endpoints
+paths:
+  /:
+    get:
+      summary: Retrieve all shorties from the server
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+      operationId: get-shorties
+      tags:
+        - Endpoints
+      x-code-samples:
+        - lang: cURL
+          source: |
+            curl --location --request GET 'http://localhost:8081/api' \
+            --header 'Accept: application/json'
+        - lang: JavaScript
+          source: |
+            var myHeaders = new Headers();
+            myHeaders.append("Accept", "application/json");
+
+            var requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow'
+            };
+
+            fetch("http://localhost:8081/api", requestOptions)
+              .then(response => response.text())
+              .then(result => console.log(result))
+              .catch(error => console.log('error', error));
+  /create:
+    post:
+      summary: Create a shorty
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/inputUrl-request-body'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+      operationId: post-shorty
+      tags:
+        - Endpoints
+      x-code-samples:
+        - lang: cURL
+          source: |
+            curl --location --request POST 'http://localhost:8081/api/create' \
+            --header 'Accept: application/json' \
+            --header 'Content-Type: application/json' \
+            --data-raw '{
+                "inputUrl": "http://suprdev.netlify.app/"
+            }'
+        - lang: JavaScript
+          source: |
+            var myHeaders = new Headers();
+            myHeaders.append("Accept", "application/json");
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({"inputUrl":"https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/learn/lecture/2619778#questions/10895550"});
+
+            var requestOptions = {
+              method: 'POST',
+              headers: myHeaders,
+              body: raw,
+              redirect: 'follow'
+            };
+            fetch("http://localhost:8081/api/create", requestOptions)
+              .then(response => response.text())
+              .then(result => console.log(result))
+              .catch(error => console.log('error', error));
+  /delete/{id}:
+    delete:
+      summary: Delete a shorty
+      parameters:
+        - $ref: '#/components/parameters/id-path'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+      operationId: delete-shorty
+      tags:
+        - Endpoints
+      x-code-samples:
+        - lang: cURL
+          source: |
+            curl --location --request DELETE 'http://localhost:8081/api/delete/605f1d6fbd9b810014a1c072' \
+            --header 'Accept: application/json'
+        - lang: JavaScript
+          source: |
+            var myHeaders = new Headers();
+            myHeaders.append("Accept", "application/json");
+
+            var requestOptions = {
+              method: 'DELETE',
+              headers: myHeaders,
+              redirect: 'follow'
+            };
+
+            fetch("http://localhost:8081/api/delete/605f1d6fbd9b810014a1c072", requestOptions)
+              .then(response => response.text())
+              .then(result => console.log(result))
+              .catch(error => console.log('error', error));
+  /deleteAll:
+    delete:
+      summary: Delete all shorties
+      responses:
+        '200':
+          $ref: '#/components/responses/200deleted'
+        '400':
+          $ref: '#/components/responses/400'
+      operationId: delete-shorties
+      tags:
+        - Endpoints
+      x-code-samples:
+        - lang: cURL
+          source: |
+            curl --location --request DELETE 'http://localhost:8081/api/deleteAll' \
+            --header 'Accept: application/json'
+        - lang: JavaScript
+          source: |
+            var myHeaders = new Headers();
+            myHeaders.append("Accept", "application/json");
+
+            var requestOptions = {
+              method: 'DELETE',
+              headers: myHeaders,
+              redirect: 'follow'
+            };
+
+            fetch("http://localhost:8081/api/deleteAll", requestOptions)
+              .then(response => response.text())
+              .then(result => console.log(result))
+              .catch(error => console.log('error', error));
+components:
+  schemas:
+    id:
+      type: string
+      minLength: 1
+      description: The shorty's identifying string (required for deletion)
+      example: 605f1d6fbd9b810014a1c072
+    inputUrl:
+      type: string
+      minLength: 1
+      description: The original/destination URL for the shorty
+      example: 'http://suprdev.netlify.app/'
+    inputUrl-request-body:
+      type: object
+      properties:
+        inputUrl:
+          $ref: '#/components/schemas/inputUrl'
+      required:
+        - inputUrl
+    200-success:
+      type: array
+      description: A list of all shorties on the server
+      uniqueItems: true
+      items:
+        type: object
+        properties:
+          _id:
+            $ref: '#/components/schemas/id'
+          inputUrl:
+            $ref: '#/components/schemas/inputUrl'
+          shortUrl:
+            type: string
+            minLength: 1
+            description: The 'shortified' version of the original URL
+            example: 'https://sup.dev/bl0fd1wb'
+            readOnly: true
+          createdAt:
+            type: string
+            minLength: 1
+            description: 'The date the shorty was first created (in [ISO8601 format](https://www.w3.org/TR/NOTE-datetime))'
+            example: '2021-03-27T11:56:31.316Z'
+            readOnly: true
+          updatedAt:
+            type: string
+            minLength: 1
+            description: 'Same as `createdAt`'
+            example: '2021-03-27T11:56:31.316Z'
+            readOnly: true
+          __v:
+            type: number
+            description: For internal use
+            example: 0
+            readOnly: true
+      readOnly: true
+    400-bad-request:
+      type: object
+      properties:
+        error:
+          type: string
+          minLength: 1
+          description: The nature of the error
+          example: Url is missing
+          readOnly: true
+    200-deleted:
+      type: object
+      properties:
+        'n':
+          type: number
+          description: The number of shorties deleted
+          minimum: 0
+          example: 3
+          readOnly: true
+        ok:
+          type: number
+          description: Returns 1 if the deletion was successful
+          example: 1
+          readOnly: true
+        deletedCount:
+          type: number
+          description: The same as `n`
+          example: 3
+          minimum: 0
+          readOnly: true
+  responses:
+    '200':
+      description: Successful API call
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/200-success'
+    200deleted:
+      description: All shorties have been successfully deleted
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/200-deleted'
+    '400':
+      description: Incorrectly formed API call
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/400-bad-request'
+          examples:
+            'Missing URL':
+              value:
+                error: 'Url is missing'
+            'Incorrect value supplied as parameter':
+              value:
+                error: '^Cast to ObjectId failed for value \"14\" at path \"_id\" for model \"Weburl\"'
+  parameters:
+    id-path:
+      name: id
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/id'
