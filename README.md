@@ -39,7 +39,7 @@ $ npm run dev
 
 ### Full API Specification
 
-**[View or download](/server/oas/index.html)** the Shortify Open API Specification (Swagger) document.
+**[View or download](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/gazconroy/shortify/open-api/server/oas/openapi.yaml)** the Shortify Open API Specification (Swagger) document.
 
 ## 💻 Technology Stack
 
