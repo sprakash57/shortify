@@ -2,7 +2,7 @@
 
 > A Simple url shortener App and services built upon **MEVN/VENoM** stack. It will convert your boring long url into nice and simple 8 character *shorties* (That i like to call those short generated urls 😁). Not to mention they are unique for every new url. It also keeps the history of your recent conversions. One click to copy and off you go.
 
-## 🚀 Quick start with Dokcer
+## 🚀 Quick start with Docker
 
 `docker-compose up` in your terminal and access the UI in the browser @ `localhost:8080`
 
@@ -26,7 +26,9 @@ $ npm run dev
 ```
 > access the services  @ `localhost:8081`
 
-### API Services
+## API Documentation
+
+### Summary
 
 |        | Endpoint       | Service               |
 |--------|----------------|-----------------------|
@@ -35,11 +37,9 @@ $ npm run dev
 | DELETE | /api/delete/id | Delete a shorty       |
 | DELETE | /api/deleteAll | Delete all shorties   |
 
-### User curl
+### Full API Specification
 
-> request: `curl -H "Content-Type: application/json" -X POST -d '{"inputUrl":"http://suprdev.netlify.app/"}' http://localhost:8081/api/create`
-
-> response: `{"_id":"5f15b209bcf04f001271c657","inputUrl":"http://suprdev.netlify.app/","shortUrl":"https://sup.dev/iviar0qg","createdAt":"2020-07-20T15:02:33.604Z","updatedAt":"2020-07-20T15:02:33.604Z","__v":0}`
+**[View or download](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/gazconroy/shortify/open-api/server/oas/openapi.yaml)** the Shortify Open API Specification (Swagger) document.
 
 ## 💻 Technology Stack
 
