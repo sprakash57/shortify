@@ -1,6 +1,4 @@
-<h1 align="center" style="color:tomato">Shortify</h1>
-
-> A Simple url shortener App and services built upon **MEVN/VENoM** stack. It will convert your boring long url into nice and simple 8 character *shorties* (That i like to call those short generated urls 😁). Not to mention they are unique for every new url. It also keeps the history of your recent conversions. One click to copy and off you go.
+**Shortify** is a simple URL shortener app and services built upon **MEVN/VENoM** stack. It will convert your boring long URL into nice and simple eight-character *shorties* (that I like to call those short generated urls 😁). Not to mention they are unique for every new URL. It also keeps the history of your recent conversions. One click to copy and off you go!
 
 ## 🚀 Quick start with Docker
 
@@ -24,7 +22,7 @@ For Server -
 $ cd server
 $ npm run dev
 ```
-> access the services  @ `localhost:8081`
+> Access the services  @ `localhost:8081`
 
 ## API Documentation
 
@@ -39,7 +37,7 @@ $ npm run dev
 
 ### Full API Specification
 
-**[View or download](server/oas/index.html)** the Shortify Open API Specification (Swagger) document.
+**[View or download](server/oas/index.html)** the Shortify Open API Specification document.
 
 ## 💻 Technology Stack
 
