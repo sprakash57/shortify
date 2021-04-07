@@ -37,7 +37,7 @@ $ npm run dev
 
 ### Full API Specification
 
-**[View or download](server/oas/index.html)** the Shortify Open API Specification document.
+**[View or download](https://sprakash57.github.io/shortify/server/oas/index.html)** the Shortify Open API Specification document.
 
 ## 💻 Technology Stack
 
