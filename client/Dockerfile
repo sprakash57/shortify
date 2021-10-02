@@ -1,4 +1,4 @@
-FROM node:12.18.2
+FROM node:14-alpine
 
 RUN mkdir -p /usr/app
 WORKDIR /usr/app
@@ -8,8 +8,5 @@ RUN npm install -g @vue/cli
 RUN npm install
 
 COPY . ./
-RUN ls
-
-EXPOSE 80
 
 CMD [ "npm", "run", "serve" ]
